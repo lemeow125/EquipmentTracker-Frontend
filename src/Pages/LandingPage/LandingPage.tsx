@@ -1,8 +1,13 @@
 import Button from "../../Components/Buttons/Button";
-import styles from "../../Components/styles";
+import styles from "../../styles";
 import citc_logo from "../../assets/citc_logo.jpg";
 import { toast } from "react-toastify";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import { useState } from "react";
+import LoginModal from "../../Components/LoginModal/LoginModal";
 export default function LandingPage() {
+  const [open, setOpen] = useState(false);
   return (
     <div style={styles.background}>
       <div
@@ -50,7 +55,7 @@ export default function LandingPage() {
                 type={"light"}
                 label={"Login"}
                 onClick={() => {
-                  toast("Successfully logged in!");
+                  setOpen(!open);
                 }}
               />
               <Button
@@ -60,6 +65,25 @@ export default function LandingPage() {
                   toast("Redirecting!");
                 }}
               />
+              <Popup
+                open={open}
+                onClose={() => setOpen(!open)}
+                modal
+                position={"top center"}
+                contentStyle={{
+                  width: "30vw",
+                  borderRadius: 16,
+                  borderColor: "grey",
+                  borderStyle: "solid",
+                  borderWidth: 1,
+                  padding: 16,
+                  alignContent: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
+                <LoginModal />
+              </Popup>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import styles from "../styles";
-import { colors } from "../styles";
+import styles from "../../styles";
+import { colors } from "../../styles";
 
 export interface props {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
