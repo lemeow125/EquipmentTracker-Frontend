@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "../../styles";
 import TextField from "@mui/material/TextField";
-import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
