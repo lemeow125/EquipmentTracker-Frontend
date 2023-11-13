@@ -64,6 +64,18 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: "flex",
     flexDirection: "column",
   },
+  input_form: {
+    color: colors.font_dark,
+    fontWeight: "bold",
+    fontSize: "clamp(1vw, 1rem, 2vw)",
+    background: "none",
+    borderRadius: 8,
+    maxWidth: "30vw",
+    minWidth: "15vw",
+    minHeight: "5vh",
+    maxHeight: "10vh",
+    marginTop: 16,
+  },
 };
 
 export default styles;
