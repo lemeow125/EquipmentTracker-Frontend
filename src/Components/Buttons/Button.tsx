@@ -13,10 +13,10 @@ export default function Button(props: props) {
   return (
     <div>
       <button
+        onClick={props.onClick}
         onMouseDown={() => {
           if (!clicked) {
-            props.onClick;
-            setClicked(true);
+            setClicked(!clicked);
           }
         }}
         onMouseUp={() => setClicked(false)}

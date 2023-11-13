@@ -1,6 +1,7 @@
 import Button from "../../Components/Buttons/Button";
 import styles from "../../Components/styles";
 import citc_logo from "../../assets/citc_logo.jpg";
+import { toast } from "react-toastify";
 export default function LandingPage() {
   return (
     <div style={styles.background}>
@@ -45,13 +46,24 @@ export default function LandingPage() {
               TRACKER
             </p>
             <div style={{ ...styles.flex_column }}>
-              <Button type={"light"} label={"Login"} onClick={() => {}} />
-              <Button type={"dark"} label={"Register"} onClick={() => {}} />
+              <Button
+                type={"light"}
+                label={"Login"}
+                onClick={() => {
+                  toast("Successfully logged in!");
+                }}
+              />
+              <Button
+                type={"dark"}
+                label={"Register"}
+                onClick={() => {
+                  toast("Redirecting!");
+                }}
+              />
             </div>
           </div>
         </div>
       </div>
-      <p>heh</p>
     </div>
   );
 }
