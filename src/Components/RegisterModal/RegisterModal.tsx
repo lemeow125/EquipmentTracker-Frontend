@@ -6,17 +6,19 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import LoginIcon from "@mui/icons-material/Login";
-import Checkbox from "@mui/material/Checkbox";
+import { AppRegistration } from "@mui/icons-material";
 import Button from "../Buttons/Button";
 import { useNavigate } from "react-router-dom";
-export default function LoginModal() {
+export default function RegisterModal() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [remember, setRemember] = useState(true);
   const [user, setUser] = useState({
+    first_name: "",
+    last_name: "",
     username: "",
+    email: "",
     password: "",
+    confirm_password: "",
   });
   return (
     <>
@@ -26,17 +28,37 @@ export default function LoginModal() {
           ...{ alignItems: "center", justifyContent: "center" },
         }}
       >
-        <LoginIcon
+        <AppRegistration
           style={{
             height: 64,
             width: 64,
             fill: colors.font_dark,
           }}
         />
-        <p style={{ ...styles.text_dark, ...styles.text_L }}>Welcome back!</p>
+        <p style={{ ...styles.text_dark, ...styles.text_L }}>Get Started</p>
       </div>
 
       <div style={styles.flex_column}>
+        <TextField
+          id="outlined-helperText"
+          label="First Name"
+          style={styles.input_form}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setUser({ ...user, first_name: e.target.value })
+          }
+          value={user.first_name}
+          placeholder={"Enter your first name"}
+        />
+        <TextField
+          id="outlined-helperText"
+          label="Last Name"
+          style={styles.input_form}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setUser({ ...user, last_name: e.target.value })
+          }
+          value={user.last_name}
+          placeholder={"Enter your last name"}
+        />
         <TextField
           id="outlined-helperText"
           label="Username"
@@ -71,42 +93,35 @@ export default function LoginModal() {
           }
           value={user.password}
         />
-        <div style={styles.flex_row}>
-          <div
-            style={{
-              ...styles.flex_row,
-              ...{ flex: 1, alignItems: "center" },
-            }}
-          >
-            <Checkbox
-              inputProps={{ "aria-label": "Checkbox demo" }}
-              defaultChecked
-              sx={{
-                color: colors.button_dark,
-                "&.Mui-checked": {
-                  color: colors.button_dark,
-                },
-              }}
-              value={remember}
-              onChange={() => setRemember(!remember)}
-            />
-            <p style={{ ...styles.text_dark, ...styles.text_S }}>Remember me</p>
-          </div>
-          <div style={{ flex: 1 }}>
-            <p
-              style={{
-                ...styles.text_dark,
-                ...styles.text_S,
-              }}
-            >
-              Forgot password?
-            </p>
-          </div>
-        </div>
+        <TextField
+          id="outlined-helperText"
+          type={showPassword ? "text" : "password"}
+          style={styles.input_form}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => setShowPassword(!showPassword)}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+          label="Confirm Password"
+          placeholder={"Re-enter password"}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setUser({ ...user, confirm_password: e.target.value })
+          }
+          value={user.confirm_password}
+        />
       </div>
       <div
         style={{
           backgroundColor: colors.button_border,
+          marginTop: "16px",
           width: "100%",
           height: "2px",
           marginBottom: 8,
@@ -114,7 +129,7 @@ export default function LoginModal() {
       />
       <Button
         type={"dark"}
-        label={"Login"}
+        label={"Register"}
         onClick={() => {
           navigate(0);
         }}

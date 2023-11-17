@@ -1,13 +1,14 @@
 import Button from "../../Components/Buttons/Button";
 import styles from "../../styles";
 import citc_logo from "../../assets/citc_logo.jpg";
-import { toast } from "react-toastify";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useState } from "react";
 import LoginModal from "../../Components/LoginModal/LoginModal";
+import RegisterModal from "../../Components/RegisterModal/RegisterModal";
 export default function LandingPage() {
-  const [open, setOpen] = useState(false);
+  const [LoginModalOpen, SetLoginModalOpen] = useState(false);
+  const [RegisterModalOpen, SetRegisterModalOpen] = useState(false);
   return (
     <div style={styles.background}>
       <div
@@ -55,19 +56,21 @@ export default function LandingPage() {
                 type={"light"}
                 label={"Login"}
                 onClick={() => {
-                  setOpen(!open);
+                  SetLoginModalOpen(true);
+                  SetRegisterModalOpen(false);
                 }}
               />
               <Button
                 type={"dark"}
                 label={"Register"}
                 onClick={() => {
-                  toast("Redirecting!");
+                  SetRegisterModalOpen(true);
+                  SetLoginModalOpen(false);
                 }}
               />
               <Popup
-                open={open}
-                onClose={() => setOpen(!open)}
+                open={LoginModalOpen}
+                onClose={() => SetLoginModalOpen(false)}
                 modal
                 position={"top center"}
                 contentStyle={{
@@ -83,6 +86,25 @@ export default function LandingPage() {
                 }}
               >
                 <LoginModal />
+              </Popup>
+              <Popup
+                open={RegisterModalOpen}
+                onClose={() => SetRegisterModalOpen(false)}
+                modal
+                position={"top center"}
+                contentStyle={{
+                  width: "30vw",
+                  borderRadius: 16,
+                  borderColor: "grey",
+                  borderStyle: "solid",
+                  borderWidth: 1,
+                  padding: 16,
+                  alignContent: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
+                <RegisterModal />
               </Popup>
             </div>
           </div>
