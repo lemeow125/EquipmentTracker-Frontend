@@ -23,16 +23,17 @@ export default function Button(props: props) {
         onMouseLeave={() => setClicked(false)}
         style={{
           borderRadius: 24,
-          minWidth: "15vw",
+          minWidth: "50%",
+          maxWidth: "128px",
           borderColor: colors.button_border,
           borderStyle: "solid",
-          borderWidth: 2,
-          paddingBottom: "0",
-          paddingTop: "0",
-          paddingRight: "5vw",
-          paddingLeft: "5vw",
-          marginBottom: "0.5vh",
-          marginTop: "0.5vh",
+          borderWidth: "2px",
+          paddingBottom: 0,
+          paddingTop: 0,
+          paddingRight: "4px",
+          paddingLeft: "4px",
+          marginBottom: "4px",
+          marginTop: "4px",
           backgroundColor:
             props.type == "light"
               ? clicked
@@ -52,7 +53,7 @@ export default function Button(props: props) {
               : clicked
               ? styles.text_dark
               : styles.text_light),
-            ...styles.text_M,
+            ...styles.text_S,
           }}
         >
           {props.label}
