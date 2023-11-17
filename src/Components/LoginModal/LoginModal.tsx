@@ -116,7 +116,7 @@ export default function LoginModal() {
         type={"dark"}
         label={"Login"}
         onClick={() => {
-          navigate(0);
+          navigate("/dashboard");
         }}
       />
     </>
