@@ -42,19 +42,19 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontWeight: "bold",
   },
   text_XL: {
-    fontSize: "clamp(1vw, 4rem, 2vw)",
+    fontSize: "clamp(2rem, 4rem, 8rem)",
   },
   text_L: {
-    fontSize: "clamp(1vw, 2rem, 2vw)",
+    fontSize: "clamp(1.5rem, 3rem, 6rem)",
   },
   text_M: {
-    fontSize: "clamp(1vw, 1rem, 2vw)",
+    fontSize: "clamp(1rem, 2rem, 4rem)",
   },
   text_S: {
-    fontSize: "clamp(1vw, 0.5rem, 2vw)",
+    fontSize: "clamp(0.5rem, 1rem, 2rem)",
   },
   text_XS: {
-    fontSize: "clamp(1vw, 0.2rem, 2vw)",
+    fontSize: "clamp(0.2rem, 0.5rem, 1rem)",
   },
   flex_row: {
     display: "flex",
@@ -70,10 +70,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontSize: "clamp(1vw, 1rem, 2vw)",
     background: "none",
     borderRadius: 8,
-    maxWidth: "30vw",
-    minWidth: "15vw",
-    minHeight: "5vh",
-    maxHeight: "10vh",
+    maxWidth: "128px",
+    minWidth: "100%",
     marginTop: 16,
   },
 };

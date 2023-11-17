@@ -7,7 +7,6 @@ import store from "./Components/Plugins/Redux/Store/Store";
 const queryClient = new QueryClient();
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./styles.css";
 const router = createHashRouter([
   {
     path: "/",
