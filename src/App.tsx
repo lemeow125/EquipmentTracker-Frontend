@@ -4,14 +4,22 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import "./App.css";
 import store from "./Components/Plugins/Redux/Store/Store";
-const queryClient = new QueryClient();
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ErrorPage from "./Pages/ErrorPage/ErrorPage";
+import DashboardPage from "./Pages/DashboardPage/DashboardPage";
+
+const queryClient = new QueryClient();
 const router = createHashRouter([
   {
     path: "/",
     element: <LandingPage />,
-    errorElement: <></>,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardPage />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
