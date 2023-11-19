@@ -106,16 +106,6 @@ export default function LoginModal() {
             />
             <p style={{ ...styles.text_dark, ...styles.text_S }}>Remember me</p>
           </div>
-          <div style={{ flex: 1 }}>
-            <p
-              style={{
-                ...styles.text_dark,
-                ...styles.text_S,
-              }}
-            >
-              Forgot password?
-            </p>
-          </div>
         </div>
       </div>
       <div

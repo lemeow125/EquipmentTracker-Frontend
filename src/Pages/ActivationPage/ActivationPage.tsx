@@ -27,6 +27,16 @@ export default function ActivationPage() {
             progress: undefined,
             theme: "light",
           });
+          toast("Please login to continue", {
+            position: "top-right",
+            autoClose: 6000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
           setTimeout(() => {
             navigate("/dashboard");
           });

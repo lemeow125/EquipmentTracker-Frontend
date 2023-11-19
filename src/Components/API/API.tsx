@@ -1,6 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
 import axios from "axios";
-import { ActivationType, LoginType, RegisterType } from "../Types/Types";
+import {
+  ActivationType,
+  LoginType,
+  RegisterType,
+  ResetPasswordConfirmType,
+} from "../Types/Types";
 
 const instance = axios.create({
   baseURL: "http://localhost:8000/",
@@ -127,6 +132,31 @@ export function ActivationAPI(activation: ActivationType) {
     })
     .catch(() => {
       console.log("Activation failed");
+      return false;
+    });
+}
+export function ResetPasswordAPI(email: string) {
+  return instance
+    .post("api/v1/accounts/users/reset_password/", { email: email })
+    .then(() => {
+      console.log("Activation Success");
+      return true;
+    })
+    .catch(() => {
+      console.log("Activation failed");
+      return false;
+    });
+}
+
+export function ResetPasswordConfirmAPI(info: ResetPasswordConfirmType) {
+  return instance
+    .post("api/v1/accounts/users/reset_password_confirm/", info)
+    .then(() => {
+      console.log("Reset Success");
+      return true;
+    })
+    .catch(() => {
+      console.log("Reset failed");
       return false;
     });
 }

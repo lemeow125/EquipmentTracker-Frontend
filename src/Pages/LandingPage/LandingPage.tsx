@@ -9,9 +9,11 @@ import RegisterModal from "../../Components/RegisterModal/RegisterModal";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../Components/Plugins/Redux/Store/Store";
+import ResetPasswordModal from "../../Components/ResetPasswordModal/ResetPasswordModal";
 export default function LandingPage() {
-  const [LoginModalOpen, SetLoginModalOpen] = useState(false);
-  const [RegisterModalOpen, SetRegisterModalOpen] = useState(false);
+  const [loginmodalOpen, SetloginmodalOpen] = useState(false);
+  const [registermodalOpen, SetRegisterModalOpen] = useState(false);
+  const [resetmodalOpen, SetResetModalOpen] = useState(false);
   const authenticated = useSelector((state: RootState) => state.auth.value);
   const navigate = useNavigate();
 
@@ -68,8 +70,9 @@ export default function LandingPage() {
                 type={"light"}
                 label={"Login"}
                 onClick={() => {
-                  SetLoginModalOpen(true);
+                  SetloginmodalOpen(true);
                   SetRegisterModalOpen(false);
+                  SetResetModalOpen(false);
                 }}
               />
               <Button
@@ -77,12 +80,22 @@ export default function LandingPage() {
                 label={"Register"}
                 onClick={() => {
                   SetRegisterModalOpen(true);
-                  SetLoginModalOpen(false);
+                  SetloginmodalOpen(false);
+                  SetResetModalOpen(false);
+                }}
+              />
+              <Button
+                type={"light"}
+                label={"Forgot Password"}
+                onClick={() => {
+                  SetResetModalOpen(true);
+                  SetRegisterModalOpen(false);
+                  SetloginmodalOpen(false);
                 }}
               />
               <Popup
-                open={LoginModalOpen}
-                onClose={() => SetLoginModalOpen(false)}
+                open={loginmodalOpen}
+                onClose={() => SetloginmodalOpen(false)}
                 modal
                 position={"top center"}
                 contentStyle={{
@@ -100,7 +113,7 @@ export default function LandingPage() {
                 <LoginModal />
               </Popup>
               <Popup
-                open={RegisterModalOpen}
+                open={registermodalOpen}
                 onClose={() => SetRegisterModalOpen(false)}
                 modal
                 position={"top center"}
@@ -117,6 +130,25 @@ export default function LandingPage() {
                 }}
               >
                 <RegisterModal />
+              </Popup>
+              <Popup
+                open={resetmodalOpen}
+                onClose={() => SetResetModalOpen(false)}
+                modal
+                position={"top center"}
+                contentStyle={{
+                  width: "512px",
+                  borderRadius: 16,
+                  borderColor: "grey",
+                  borderStyle: "solid",
+                  borderWidth: 1,
+                  padding: 16,
+                  alignContent: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
+                <ResetPasswordModal />
               </Popup>
             </div>
           </div>

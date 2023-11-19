@@ -16,6 +16,12 @@ export type ActivationType = {
   token: string;
 };
 
+export type ResetPasswordConfirmType = {
+  uid: string;
+  token: string;
+  new_password: string;
+};
+
 export type AddEquipmentType = {
   name: string;
   remarks: string;

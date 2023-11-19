@@ -10,6 +10,7 @@ import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import DashboardPage from "./Pages/DashboardPage/DashboardPage";
 import Revalidator from "./Components/Revalidator/Revalidator";
 import ActivationPage from "./Pages/ActivationPage/ActivationPage";
+import ResetPasswordPage from "./Pages/ResetPasswordPage/ResetPasswordPage";
 
 const queryClient = new QueryClient();
 const router = createHashRouter([
@@ -38,6 +39,15 @@ const router = createHashRouter([
     element: (
       <>
         <ActivationPage />
+      </>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/reset_password_confirm/:uid/:token",
+    element: (
+      <>
+        <ResetPasswordPage />
       </>
     ),
     errorElement: <ErrorPage />,
