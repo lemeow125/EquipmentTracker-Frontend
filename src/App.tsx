@@ -8,17 +8,28 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import DashboardPage from "./Pages/DashboardPage/DashboardPage";
+import Revalidator from "./Components/Revalidator/Revalidator";
 
 const queryClient = new QueryClient();
 const router = createHashRouter([
   {
     path: "/",
-    element: <LandingPage />,
+    element: (
+      <>
+        <Revalidator />
+        <LandingPage />
+      </>
+    ),
     errorElement: <ErrorPage />,
   },
   {
     path: "/dashboard",
-    element: <DashboardPage />,
+    element: (
+      <>
+        <Revalidator />
+        <DashboardPage />
+      </>
+    ),
     errorElement: <ErrorPage />,
   },
 ]);
