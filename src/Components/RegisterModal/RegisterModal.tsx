@@ -10,6 +10,7 @@ import { AppRegistration } from "@mui/icons-material";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 import { RegisterAPI } from "../API/API";
+import { toast } from "react-toastify";
 export default function RegisterModal() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -62,6 +63,16 @@ export default function RegisterModal() {
           }
           value={user.last_name}
           placeholder={"Enter your last name"}
+        />
+        <TextField
+          id="outlined-helperText"
+          label="Email"
+          style={styles.input_form}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setUser({ ...user, email: e.target.value })
+          }
+          value={user.email}
+          placeholder={"Enter your email"}
         />
         <TextField
           id="outlined-helperText"
@@ -143,9 +154,32 @@ export default function RegisterModal() {
           } else {
             const status = await RegisterAPI(user);
             if (status[0]) {
-              navigate("/");
+              setError(
+                "Registration successful. Please activate your account using the email provided"
+              );
+              toast("Registration successful", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+              setTimeout(() => {
+                navigate(0);
+              }, 3000);
+              setUser({
+                first_name: "",
+                last_name: "",
+                username: "",
+                email: "",
+                password: "",
+                confirm_password: "",
+              });
             } else {
-              setError(status[1]);
+              setError(JSON.stringify(status[1]));
             }
           }
         }}

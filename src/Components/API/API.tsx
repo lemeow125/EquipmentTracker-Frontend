@@ -5,6 +5,7 @@ import { ActivationType, LoginType, RegisterType } from "../Types/Types";
 const instance = axios.create({
   baseURL: "http://localhost:8000/",
 });
+
 // Token Handling
 export async function getAccessToken() {
   const accessToken = await localStorage.getItem("access_token");
@@ -36,6 +37,25 @@ export async function GetConfig() {
   };
 }
 
+export function ParseError(error: { response: { data: string } }) {
+  if (error.response && error.response.data) {
+    if (error.response.data.length > 50) {
+      return "Error truncated (too long)";
+    }
+    return JSON.stringify(error.response.data)
+      .replace(/[{}]/g, " ")
+      .replace(/\(/g, " ")
+      .replace(/\)/g, " ")
+      .replace(/"/g, " ")
+      .replace(/,/g, " ")
+      .replace(/\[/g, "")
+      .replace(/\]/g, "")
+      .replace(/\./g, "")
+      .replace(/non_field_errors/g, "")
+      .trim();
+  }
+  return "Unable to reach server";
+}
 // User APIs
 
 export function RegisterAPI(register: RegisterType) {
@@ -47,7 +67,7 @@ export function RegisterAPI(register: RegisterType) {
     })
     .catch((error) => {
       console.log("Registration failed");
-      return [false, error.response];
+      return [false, ParseError(error)];
     });
 }
 
