@@ -10,14 +10,19 @@ import LoginIcon from "@mui/icons-material/Login";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "../Buttons/Button";
 import { useNavigate } from "react-router-dom";
+import { LoginAPI } from "../API/API";
+import { useDispatch } from "react-redux";
+import { Toggle_Login } from "../Plugins/Redux/Slices/AuthSlice/AuthSlice";
 export default function LoginModal() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(true);
+  const [error, setError] = useState("");
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
+  const dispatch = useDispatch();
   return (
     <>
       <div
@@ -41,9 +46,10 @@ export default function LoginModal() {
           id="outlined-helperText"
           label="Username"
           style={styles.input_form}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setUser({ ...user, username: e.target.value })
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setUser({ ...user, username: e.target.value });
+            setError("");
+          }}
           value={user.username}
           placeholder={"Enter username"}
         />
@@ -56,7 +62,10 @@ export default function LoginModal() {
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle password visibility"
-                  onClick={() => setShowPassword(!showPassword)}
+                  onClick={() => {
+                    setShowPassword(!showPassword);
+                    setError("");
+                  }}
                   edge="end"
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -112,11 +121,18 @@ export default function LoginModal() {
           marginBottom: 8,
         }}
       />
+      <p style={{ ...styles.text_dark, ...styles.text_S }}>{error}</p>
       <Button
         type={"dark"}
         label={"Login"}
-        onClick={() => {
-          navigate("/dashboard");
+        onClick={async () => {
+          const status = await LoginAPI(user);
+          if (status === true) {
+            await dispatch(Toggle_Login());
+            navigate("/dashboard");
+          } else {
+            setError("Invalid login");
+          }
         }}
       />
     </>

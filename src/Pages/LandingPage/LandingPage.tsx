@@ -3,12 +3,24 @@ import styles from "../../styles";
 import citc_logo from "../../assets/citc_logo.jpg";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginModal from "../../Components/LoginModal/LoginModal";
 import RegisterModal from "../../Components/RegisterModal/RegisterModal";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { RootState } from "../../Components/Plugins/Redux/Store/Store";
 export default function LandingPage() {
   const [LoginModalOpen, SetLoginModalOpen] = useState(false);
   const [RegisterModalOpen, SetRegisterModalOpen] = useState(false);
+  const authenticated = useSelector((state: RootState) => state.auth.value);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authenticated) {
+      navigate("/dashboard");
+      console.log("Already logged in. Redirecting to dashboard page");
+    }
+  }, [authenticated, navigate]);
   return (
     <div style={styles.background}>
       <div

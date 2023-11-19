@@ -1,15 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles, { colors } from "../../styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import SidebarModal from "../SidebarModal/SidebarModal";
 import { Drawer } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../Plugins/Redux/Store/Store";
+import { useNavigate } from "react-router-dom";
 
 export interface props {
-  label: React.ReactNode;
+  label: string;
 }
 
 export default function Header(props: props) {
   const [SidebarOpen, SetSidebarOpen] = useState(false);
+  const authenticated = useSelector((state: RootState) => state.auth.value);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!authenticated) {
+      navigate("/");
+      console.log("Not logged in. Redirecting to landing page");
+    }
+  }, [authenticated, navigate]);
+
   return (
     <div
       style={{
