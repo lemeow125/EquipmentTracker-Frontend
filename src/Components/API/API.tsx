@@ -121,7 +121,7 @@ export async function UserAPI() {
 export function ActivationAPI(activation: ActivationType) {
   return instance
     .post("api/v1/accounts/users/activation/", activation)
-    .then(async () => {
+    .then(() => {
       console.log("Activation Success");
       return true;
     })

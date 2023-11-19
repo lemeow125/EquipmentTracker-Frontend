@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import DashboardPage from "./Pages/DashboardPage/DashboardPage";
 import Revalidator from "./Components/Revalidator/Revalidator";
+import ActivationPage from "./Pages/ActivationPage/ActivationPage";
 
 const queryClient = new QueryClient();
 const router = createHashRouter([
@@ -28,6 +29,15 @@ const router = createHashRouter([
       <>
         <Revalidator />
         <DashboardPage />
+      </>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/activation/:uid/:token",
+    element: (
+      <>
+        <ActivationPage />
       </>
     ),
     errorElement: <ErrorPage />,

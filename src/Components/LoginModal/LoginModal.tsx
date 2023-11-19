@@ -29,7 +29,11 @@ export default function LoginModal() {
       <div
         style={{
           ...styles.flex_row,
-          ...{ alignItems: "center", justifyContent: "center" },
+          ...{
+            alignItems: "center",
+            justifyContent: "center",
+            overflowY: "scroll",
+          },
         }}
       >
         <LoginIcon

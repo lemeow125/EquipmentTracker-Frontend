@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { auth_toggle } from "../Plugins/Redux/Slices/AuthSlice/AuthSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-export default function Sidebar() {
+export default function Drawer() {
   const user = useQuery({ queryKey: ["user"], queryFn: UserAPI });
   const dispatch = useDispatch();
   const navigate = useNavigate();
