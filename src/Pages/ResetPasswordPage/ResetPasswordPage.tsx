@@ -80,9 +80,9 @@ export default function ResetPasswordPage() {
           label="Confirm Password"
           placeholder={"Re-enter password"}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setUser({ ...user, password: e.target.value })
+            setUser({ ...user, confirm_password: e.target.value })
           }
-          value={user.password}
+          value={user.confirm_password}
         />
         <div style={{ justifyContent: "center", display: "flex" }}>
           <div
@@ -93,7 +93,7 @@ export default function ResetPasswordPage() {
               height: "4px",
               marginBottom: 8,
             }}
-          />{" "}
+          />
         </div>
 
         <p style={{ ...styles.text_dark, ...styles.text_M }}>{feedback}</p>

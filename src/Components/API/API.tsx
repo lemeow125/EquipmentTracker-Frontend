@@ -63,9 +63,9 @@ export function ParseError(error: { response: { data: string } }) {
 }
 // User APIs
 
-export function RegisterAPI(register: RegisterType) {
+export function RegisterAPI(info: RegisterType) {
   return instance
-    .post("api/v1/accounts/users/", register)
+    .post("api/v1/accounts/users/", info)
     .then(async (response) => {
       console.log(response.data);
       return [true, 0];
@@ -86,11 +86,11 @@ export function LoginAPI(user: LoginType, remember_session: boolean) {
         setRefreshToken(response.data.refresh);
       }
 
-      console.log("Login Success ");
+      console.log("Login Success");
       return true;
     })
-    .catch(() => {
-      console.log("Login Failed");
+    .catch((error) => {
+      console.log("Login Failed", error.response.data);
       return false;
     });
 }

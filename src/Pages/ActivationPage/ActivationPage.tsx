@@ -38,7 +38,7 @@ export default function ActivationPage() {
             theme: "light",
           });
           setTimeout(() => {
-            navigate("/dashboard");
+            navigate("/");
           });
         } else {
           setFeedback("Invalid activation link");
