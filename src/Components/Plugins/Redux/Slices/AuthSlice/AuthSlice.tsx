@@ -7,13 +7,13 @@ export const AuthSlice = createSlice({
     value: false,
   },
   reducers: {
-    Toggle_Login: (state) => {
+    auth_toggle: (state) => {
       state.value = !state.value;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { Toggle_Login } = AuthSlice.actions;
+export const { auth_toggle } = AuthSlice.actions;
 
 export default AuthSlice.reducer;

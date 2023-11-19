@@ -12,7 +12,7 @@ import Button from "../Buttons/Button";
 import { useNavigate } from "react-router-dom";
 import { LoginAPI } from "../API/API";
 import { useDispatch } from "react-redux";
-import { Toggle_Login } from "../Plugins/Redux/Slices/AuthSlice/AuthSlice";
+import { auth_toggle } from "../Plugins/Redux/Slices/AuthSlice/AuthSlice";
 export default function LoginModal() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -128,7 +128,7 @@ export default function LoginModal() {
         onClick={async () => {
           const status = await LoginAPI(user);
           if (status === true) {
-            await dispatch(Toggle_Login());
+            await dispatch(auth_toggle());
             navigate("/dashboard");
           } else {
             setError("Invalid login");
