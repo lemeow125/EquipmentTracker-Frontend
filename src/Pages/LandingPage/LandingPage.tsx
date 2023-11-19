@@ -74,7 +74,7 @@ export default function LandingPage() {
                 modal
                 position={"top center"}
                 contentStyle={{
-                  width: "30vw",
+                  width: "512px",
                   borderRadius: 16,
                   borderColor: "grey",
                   borderStyle: "solid",
@@ -93,7 +93,7 @@ export default function LandingPage() {
                 modal
                 position={"top center"}
                 contentStyle={{
-                  width: "30vw",
+                  width: "512px",
                   borderRadius: 16,
                   borderColor: "grey",
                   borderStyle: "solid",

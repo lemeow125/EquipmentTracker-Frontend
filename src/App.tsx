@@ -30,8 +30,8 @@ export default function App() {
         <RouterProvider router={router} />
       </QueryClientProvider>
       <ToastContainer
+        position={"top-right"}
         autoClose={1500}
-        position="bottom-center"
         closeOnClick
         pauseOnHover
         draggable

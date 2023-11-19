@@ -42,19 +42,19 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontWeight: "bold",
   },
   text_XL: {
-    fontSize: "clamp(2rem, 4rem, 8rem)",
+    fontSize: "clamp(2rem, 3rem, 8rem)",
   },
   text_L: {
-    fontSize: "clamp(1.5rem, 3rem, 6rem)",
+    fontSize: "clamp(1.5rem, 2rem, 6rem)",
   },
   text_M: {
-    fontSize: "clamp(1rem, 2rem, 4rem)",
+    fontSize: "clamp(1rem, 1rem, 4rem)",
   },
   text_S: {
-    fontSize: "clamp(0.5rem, 1rem, 2rem)",
+    fontSize: "clamp(0.6rem, 0.8rem, 1rem)",
   },
   text_XS: {
-    fontSize: "clamp(0.2rem, 0.5rem, 1rem)",
+    fontSize: "clamp(0.5rem, 0.6rem, 0.8rem)",
   },
   flex_row: {
     display: "flex",
