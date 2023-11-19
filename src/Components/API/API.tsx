@@ -51,13 +51,15 @@ export function RegisterAPI(register: RegisterType) {
     });
 }
 
-export function LoginAPI(user: LoginType) {
+export function LoginAPI(user: LoginType, remember_session: boolean) {
   return instance
     .post("api/v1/accounts/jwt/create/", user)
     .then(async (response) => {
       console.log(response.data);
       setAccessToken(response.data.access);
-      setRefreshToken(response.data.refresh);
+      if (remember_session) {
+        setRefreshToken(response.data.refresh);
+      }
 
       console.log("Login Success ");
       return true;

@@ -16,7 +16,7 @@ import { auth_toggle } from "../Plugins/Redux/Slices/AuthSlice/AuthSlice";
 export default function LoginModal() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [remember, setRemember] = useState(true);
+  const [remember_session, setRememberSession] = useState(true);
   const [error, setError] = useState("");
   const [user, setUser] = useState({
     username: "",
@@ -96,8 +96,8 @@ export default function LoginModal() {
                   color: colors.button_dark,
                 },
               }}
-              value={remember}
-              onChange={() => setRemember(!remember)}
+              value={remember_session}
+              onChange={() => setRememberSession(!remember_session)}
             />
             <p style={{ ...styles.text_dark, ...styles.text_S }}>Remember me</p>
           </div>
@@ -126,9 +126,10 @@ export default function LoginModal() {
         type={"dark"}
         label={"Login"}
         onClick={async () => {
-          const status = await LoginAPI(user);
+          const status = await LoginAPI(user, remember_session);
           if (status === true) {
             await dispatch(auth_toggle());
+
             navigate("/dashboard");
           } else {
             setError("Invalid login");
