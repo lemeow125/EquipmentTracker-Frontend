@@ -56,59 +56,55 @@ export default function Sidebar() {
           marginBottom: 8,
         }}
       />
-      <div style={styles.flex_row}>
-        <HomeIcon
-          style={{
-            width: "48px",
-            height: "48px",
-            color: "white",
-            marginRight: "2px",
-            alignSelf: "center",
-            justifySelf: "center",
-          }}
-        />
-        <p
-          style={{
-            ...styles.text_light,
-            ...styles.text_M,
-          }}
-        >
-          Dashboard
-        </p>
-      </div>
-      <div style={styles.flex_row}>
-        <DrawerButton
-          onClick={async () => {
-            navigate("/");
-            await dispatch(auth_toggle());
-            await setAccessToken("");
-            await setRefreshToken("");
-            toast("Logged out", {
-              position: "top-right",
-              autoClose: 2000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-          }}
-          icon={
-            <LogoutIcon
-              style={{
-                width: "48px",
-                height: "48px",
-                color: "white",
-                marginRight: "2px",
-                alignSelf: "center",
-                justifySelf: "center",
-              }}
-            />
-          }
-          label={"Log out"}
-        />
-      </div>
+      <DrawerButton
+        onClick={() => {
+          navigate("/dashboard");
+        }}
+        icon={
+          <HomeIcon
+            style={{
+              width: "48px",
+              height: "48px",
+              color: "white",
+              marginRight: "2px",
+              alignSelf: "center",
+              justifySelf: "center",
+            }}
+          />
+        }
+        label={"Dashboard"}
+      />
+      <DrawerButton
+        onClick={async () => {
+          navigate("/");
+          await dispatch(auth_toggle());
+          await setAccessToken("");
+          await setRefreshToken("");
+          toast("Logged out", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }}
+        icon={
+          <LogoutIcon
+            style={{
+              width: "48px",
+              height: "48px",
+              color: "white",
+              marginRight: "2px",
+              alignSelf: "center",
+              justifySelf: "center",
+            }}
+          />
+        }
+        label={"Log out"}
+      />
     </div>
   );
 }
