@@ -2,9 +2,11 @@
 import axios from "axios";
 import {
   ActivationType,
+  EquipmentListType,
   LoginType,
   RegisterType,
   ResetPasswordConfirmType,
+  EquipmentInstanceListType,
 } from "../Types/Types";
 
 const instance = axios.create({
@@ -106,6 +108,7 @@ export async function JWTRefreshAPI() {
       return true;
     })
     .catch(() => {
+      console.log("Error refreshing token");
       return false;
     });
 }
@@ -119,7 +122,6 @@ export async function UserAPI() {
     })
     .catch(() => {
       console.log("Error retrieving user data");
-      return false;
     });
 }
 
@@ -128,11 +130,9 @@ export function ActivationAPI(activation: ActivationType) {
     .post("api/v1/accounts/users/activation/", activation)
     .then(() => {
       console.log("Activation Success");
-      return true;
     })
     .catch(() => {
       console.log("Activation failed");
-      return false;
     });
 }
 export function ResetPasswordAPI(email: string) {
@@ -140,11 +140,9 @@ export function ResetPasswordAPI(email: string) {
     .post("api/v1/accounts/users/reset_password/", { email: email })
     .then(() => {
       console.log("Activation Success");
-      return true;
     })
     .catch(() => {
       console.log("Activation failed");
-      return false;
     });
 }
 
@@ -153,10 +151,34 @@ export function ResetPasswordConfirmAPI(info: ResetPasswordConfirmType) {
     .post("api/v1/accounts/users/reset_password_confirm/", info)
     .then(() => {
       console.log("Reset Success");
-      return true;
     })
     .catch(() => {
       console.log("Reset failed");
-      return false;
+    });
+}
+
+// Equipment APIs
+
+export async function EquipmentsAPI() {
+  const config = await GetConfig();
+  return instance
+    .get("api/v1/equipments/equipments/", config)
+    .then((response) => {
+      return response.data as EquipmentListType;
+    })
+    .catch(() => {
+      console.log("Error retrieving equipments");
+    });
+}
+
+export async function EquipmentInstancesAPI() {
+  const config = await GetConfig();
+  return instance
+    .get("api/v1/equipments/equipment_instances/", config)
+    .then((response) => {
+      return response.data as EquipmentInstanceListType;
+    })
+    .catch(() => {
+      console.log("Error retrieving equipments");
     });
 }

@@ -38,7 +38,7 @@ export default function Header(props: props) {
           }}
         />
       </div>
-      <p style={{ ...styles.text_light, ...styles.text_M, ...{ flex: 1 } }}>
+      <p style={{ ...styles.text_light, ...styles.text_L, ...{ flex: 1 } }}>
         {props.label}
       </p>
       <div style={{ flex: 1 }} />

@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../Components/Plugins/Redux/Store/Store";
 import ResetPasswordModal from "../../Components/ResetPasswordModal/ResetPasswordModal";
+
 export default function LandingPage() {
   const [loginmodalOpen, SetloginmodalOpen] = useState(false);
   const [registermodalOpen, SetRegisterModalOpen] = useState(false);
