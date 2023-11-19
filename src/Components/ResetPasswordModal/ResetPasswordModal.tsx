@@ -61,7 +61,7 @@ export default function ResetPasswordModal() {
         />
         <Button
           type={"dark"}
-          label={"Send Reset Request"}
+          label={"Confirm"}
           onClick={async () => {
             const status = await ResetPasswordAPI(email);
             if (status === true) {
