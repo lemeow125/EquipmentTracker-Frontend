@@ -33,7 +33,7 @@ export default function Revalidator() {
         setRechecked(true);
       });
     }
-  }, []);
+  }, [authenticated, dispatch, navigate]);
 
   return <></>;
 }
