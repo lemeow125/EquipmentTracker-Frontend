@@ -8,11 +8,12 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import Checkbox from "@mui/material/Checkbox";
-import Button from "../Buttons/Button";
+import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 import { LoginAPI } from "../API/API";
 import { useDispatch } from "react-redux";
 import { auth_toggle } from "../Plugins/Redux/Slices/AuthSlice/AuthSlice";
+import { toast } from "react-toastify";
 export default function LoginModal() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -129,8 +130,17 @@ export default function LoginModal() {
           const status = await LoginAPI(user, remember_session);
           if (status === true) {
             await dispatch(auth_toggle());
-
             navigate("/dashboard");
+            toast("Logged in", {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
           } else {
             setError("Invalid login");
           }

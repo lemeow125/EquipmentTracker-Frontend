@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles, { colors } from "../../styles";
 import MenuIcon from "@mui/icons-material/Menu";
-import SidebarModal from "../SidebarModal/SidebarModal";
+import SidebarModal from "../Sidebar/Sidebar";
 import { Drawer } from "@mui/material";
 export interface props {
   label: string;

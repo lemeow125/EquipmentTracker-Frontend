@@ -7,11 +7,13 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { AppRegistration } from "@mui/icons-material";
-import Button from "../Buttons/Button";
+import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+import { RegisterAPI } from "../API/API";
 export default function RegisterModal() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+
   const [user, setUser] = useState({
     first_name: "",
     last_name: "",
@@ -20,6 +22,7 @@ export default function RegisterModal() {
     password: "",
     confirm_password: "",
   });
+  const [error, setError] = useState("");
   return (
     <>
       <div
@@ -43,9 +46,10 @@ export default function RegisterModal() {
           id="outlined-helperText"
           label="First Name"
           style={styles.input_form}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setUser({ ...user, first_name: e.target.value })
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setUser({ ...user, first_name: e.target.value });
+            setError("");
+          }}
           value={user.first_name}
           placeholder={"Enter your first name"}
         />
@@ -63,9 +67,10 @@ export default function RegisterModal() {
           id="outlined-helperText"
           label="Username"
           style={styles.input_form}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setUser({ ...user, username: e.target.value })
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setUser({ ...user, username: e.target.value });
+            setError("");
+          }}
           value={user.username}
           placeholder={"Enter username"}
         />
@@ -112,12 +117,14 @@ export default function RegisterModal() {
           }}
           label="Confirm Password"
           placeholder={"Re-enter password"}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setUser({ ...user, confirm_password: e.target.value })
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setUser({ ...user, confirm_password: e.target.value });
+            setError("");
+          }}
           value={user.confirm_password}
         />
       </div>
+      <p style={{ ...styles.text_dark, ...styles.text_M }}>{error}</p>
       <div
         style={{
           backgroundColor: colors.button_border,
@@ -130,8 +137,17 @@ export default function RegisterModal() {
       <Button
         type={"dark"}
         label={"Register"}
-        onClick={() => {
-          navigate(0);
+        onClick={async () => {
+          if (user.password !== user.confirm_password) {
+            setError("Passwords do not match");
+          } else {
+            const status = await RegisterAPI(user);
+            if (status[0]) {
+              navigate("/");
+            } else {
+              setError(status[1]);
+            }
+          }
         }}
       />
     </>

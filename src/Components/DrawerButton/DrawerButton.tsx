@@ -4,11 +4,11 @@ import { colors } from "../../styles";
 
 export interface props {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  label?: string;
-  type: "light" | "dark";
   children?: React.ReactNode;
+  icon?: React.ReactNode;
+  label: string;
 }
-export default function Button(props: props) {
+export default function DrawerButton(props: props) {
   const [clicked, setClicked] = useState(false);
   return (
     <div>
@@ -23,7 +23,7 @@ export default function Button(props: props) {
         onMouseLeave={() => setClicked(false)}
         style={{
           borderRadius: 24,
-          minWidth: "50%",
+          minWidth: "128px",
           maxWidth: "128px",
           borderColor: colors.button_border,
           borderStyle: "solid",
@@ -34,31 +34,21 @@ export default function Button(props: props) {
           paddingLeft: "4px",
           marginBottom: "4px",
           marginTop: "4px",
-          backgroundColor:
-            props.type == "light"
-              ? clicked
-                ? colors.button_dark
-                : colors.button_light
-              : clicked
-              ? colors.button_light
-              : colors.button_dark,
+          backgroundColor: clicked ? colors.button_light : colors.button_dark,
         }}
       >
-        <p
-          style={{
-            ...(props.type == "light"
-              ? clicked
-                ? styles.text_light
-                : styles.text_dark
-              : clicked
-              ? styles.text_dark
-              : styles.text_light),
-            ...styles.text_S,
-          }}
-        >
-          {props.label}
-        </p>
-        {props.children}
+        <div style={styles.flex_row}>
+          {clicked ? <></> : props.icon}
+          <p
+            style={{
+              ...(clicked ? styles.text_dark : styles.text_light),
+              ...styles.text_M,
+              ...{ marginLeft: "4px" },
+            }}
+          >
+            {props.label}
+          </p>
+        </div>
       </button>
     </div>
   );

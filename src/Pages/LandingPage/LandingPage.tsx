@@ -1,4 +1,4 @@
-import Button from "../../Components/Buttons/Button";
+import Button from "../../Components/Button/Button";
 import styles from "../../styles";
 import citc_logo from "../../assets/citc_logo.jpg";
 import Popup from "reactjs-popup";

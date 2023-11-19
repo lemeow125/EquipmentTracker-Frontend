@@ -43,11 +43,11 @@ export function RegisterAPI(register: RegisterType) {
     .post("api/v1/accounts/users/", register)
     .then(async (response) => {
       console.log(response.data);
-      return true;
+      return [true, 0];
     })
-    .catch(() => {
+    .catch((error) => {
       console.log("Registration failed");
-      return false;
+      return [false, error.response];
     });
 }
 
@@ -85,14 +85,10 @@ export async function JWTRefreshAPI() {
     });
 }
 
-export function UserAPI() {
-  const token = JSON.parse(localStorage.getItem("token") || "{}");
+export async function UserAPI() {
+  const config = await GetConfig();
   return instance
-    .get("api/v1/accounts/users/me/", {
-      headers: {
-        Authorization: "Token " + token,
-      },
-    })
+    .get("api/v1/accounts/users/me/", config)
     .then((response) => {
       return response.data;
     })
