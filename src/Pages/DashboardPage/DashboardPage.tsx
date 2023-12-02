@@ -10,6 +10,7 @@ import ChairIcon from "@mui/icons-material/Chair";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import AddToQueueIcon from "@mui/icons-material/AddToQueue";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import NoteIcon from "@mui/icons-material/Note";
 import { colors } from "../../styles";
 import { useNavigate } from "react-router-dom";
 export default function Dashboard() {
@@ -324,6 +325,37 @@ export default function Dashboard() {
             }}
           >
             Add SKU
+          </p>
+        </Button>
+        <Button
+          style={{
+            ...styles.flex_column,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+          onClick={() => {
+            navigate("/view/equipments");
+          }}
+        >
+          <NoteIcon
+            style={{
+              height: 64,
+              width: 64,
+              fill: colors.font_dark,
+              marginLeft: "1rem",
+              marginRight: "1rem",
+            }}
+          />
+          <p
+            style={{
+              ...styles.text_dark,
+              ...styles.text_M,
+            }}
+          >
+            View SKUs
           </p>
         </Button>
       </div>
