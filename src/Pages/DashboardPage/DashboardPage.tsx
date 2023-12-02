@@ -13,6 +13,9 @@ import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import NoteIcon from "@mui/icons-material/Note";
 import { colors } from "../../styles";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import AddSKUModal from "../../Components/AddSKUModal/AddSKUModal";
+import Popup from "reactjs-popup";
 export default function Dashboard() {
   const navigate = useNavigate();
 
@@ -29,6 +32,9 @@ export default function Dashboard() {
     ],
   });
   const isLoading = queries.some((result) => result.isLoading);
+
+  const [addSKUmodalOpen, SetAddSKUModalOpen] = useState(false);
+  const [additemmodalOpen, SetAddItemModalOpen] = useState(false);
 
   if (isLoading) {
     return (
@@ -306,7 +312,7 @@ export default function Dashboard() {
             },
           }}
           onClick={() => {
-            navigate("/add/equipment");
+            SetAddSKUModalOpen(true);
           }}
         >
           <NoteAddIcon
@@ -484,6 +490,25 @@ export default function Dashboard() {
           </p>
         </Button>
       </div>
+      <Popup
+        open={addSKUmodalOpen}
+        onClose={() => SetAddSKUModalOpen(false)}
+        modal
+        position={"top center"}
+        contentStyle={{
+          width: "512px",
+          borderRadius: 16,
+          borderColor: "grey",
+          borderStyle: "solid",
+          borderWidth: 1,
+          padding: 16,
+          alignContent: "center",
+          justifyContent: "center",
+          textAlign: "center",
+        }}
+      >
+        <AddSKUModal />
+      </Popup>
     </div>
   );
 }

@@ -7,6 +7,8 @@ import {
   RegisterType,
   ResetPasswordConfirmType,
   EquipmentInstanceListType,
+  EquipmentType,
+  AddEquipmentType,
 } from "../Types/Types";
 
 const instance = axios.create({
@@ -168,6 +170,19 @@ export async function EquipmentsAPI() {
     })
     .catch(() => {
       console.log("Error retrieving equipments");
+    });
+}
+
+export async function EquipmentCreateAPI(equipment: AddEquipmentType) {
+  const config = await GetConfig();
+  return instance
+    .post("api/v1/equipments/equipments/", equipment, config)
+    .then((response) => {
+      return [true, response.data as EquipmentType];
+    })
+    .catch((error) => {
+      console.log("Error creating equipment");
+      return [false, ParseError(error)];
     });
 }
 

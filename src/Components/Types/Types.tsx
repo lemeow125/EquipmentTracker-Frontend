@@ -24,7 +24,8 @@ export type ResetPasswordConfirmType = {
 
 export type AddEquipmentType = {
   name: string;
-  remarks: string;
+  description: string;
+  category?: string;
 };
 
 export type EquipmentType = {
