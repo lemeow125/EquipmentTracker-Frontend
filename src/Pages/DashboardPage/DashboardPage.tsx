@@ -10,7 +10,10 @@ import ChairIcon from "@mui/icons-material/Chair";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import AddToQueueIcon from "@mui/icons-material/AddToQueue";
 import { colors } from "../../styles";
+import { useNavigate } from "react-router-dom";
 export default function Dashboard() {
+  const navigate = useNavigate();
+
   const queries = useQueries({
     queries: [
       {
@@ -238,6 +241,9 @@ export default function Dashboard() {
               flexWrap: "wrap",
             },
           }}
+          onClick={() => {
+            navigate("/view/equipment_instances");
+          }}
         >
           <FormatListBulletedIcon
             style={{
@@ -265,6 +271,9 @@ export default function Dashboard() {
               justifyContent: "center",
               flexWrap: "wrap",
             },
+          }}
+          onClick={() => {
+            navigate("/add/equipment_instance");
           }}
         >
           <AddToQueueIcon

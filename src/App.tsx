@@ -11,6 +11,8 @@ import DashboardPage from "./Pages/DashboardPage/DashboardPage";
 import Revalidator from "./Components/Revalidator/Revalidator";
 import ActivationPage from "./Pages/ActivationPage/ActivationPage";
 import ResetPasswordPage from "./Pages/ResetPasswordPage/ResetPasswordPage";
+import EquipmentInstancesListPage from "./Pages/EquipmentInstancesListPage/EquipmentInstancesListPage";
+import AddEquipmentInstancePage from "./Pages/AddEquipmentInstancePage/AddEquipmentInstancePage";
 
 const queryClient = new QueryClient();
 const router = createHashRouter([
@@ -30,6 +32,26 @@ const router = createHashRouter([
       <>
         <Revalidator />
         <DashboardPage />
+      </>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/view/equipment_instances",
+    element: (
+      <>
+        <Revalidator />
+        <EquipmentInstancesListPage />
+      </>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/add/equipment_instance",
+    element: (
+      <>
+        <Revalidator />
+        <AddEquipmentInstancePage />
       </>
     ),
     errorElement: <ErrorPage />,
