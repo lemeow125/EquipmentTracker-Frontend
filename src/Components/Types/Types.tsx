@@ -45,6 +45,11 @@ export type AddEquipmentInstanceType = {
   remarks?: string;
 };
 
+export type PatchEquipmentInstanceType = {
+  status: string;
+  remarks?: string;
+};
+
 export type EquipmentInstanceType = {
   id: number;
   equipment: string;

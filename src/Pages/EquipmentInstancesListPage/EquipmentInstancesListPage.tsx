@@ -11,8 +11,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { colors } from "../../styles";
+import EditItemModal from "../../Components/EditItemModal/EditItemModal";
+import { useState } from "react";
+import Popup from "reactjs-popup";
 
 export default function EquipmentInstancesListPage() {
+  const [editmodalOpen, SetEditModalOpen] = useState(false);
+  const [selectedItem, SetSelectedItem] = useState(0);
   const equipment_instances = useQuery({
     queryKey: ["equipment_instances"],
     queryFn: EquipmentInstancesAPI,
@@ -88,7 +93,8 @@ export default function EquipmentInstancesListPage() {
                       key={equipment.id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                       onClick={() => {
-                        console.log("HEH");
+                        SetSelectedItem(equipment.id);
+                        SetEditModalOpen(true);
                       }}
                     >
                       <TableCell align="center" component="th" scope="row">
@@ -129,6 +135,25 @@ export default function EquipmentInstancesListPage() {
           </TableContainer>
         </div>
       </div>
+      <Popup
+        open={editmodalOpen}
+        onClose={() => SetEditModalOpen(false)}
+        modal
+        position={"top center"}
+        contentStyle={{
+          width: "512px",
+          borderRadius: 16,
+          borderColor: "grey",
+          borderStyle: "solid",
+          borderWidth: 1,
+          padding: 16,
+          alignContent: "center",
+          justifyContent: "center",
+          textAlign: "center",
+        }}
+      >
+        <EditItemModal id={selectedItem} setOpen={SetEditModalOpen} />
+      </Popup>
     </div>
   );
 }

@@ -11,6 +11,7 @@ import {
   AddEquipmentType,
   AddEquipmentInstanceType,
   EquipmentInstanceType,
+  PatchEquipmentInstanceType,
 } from "../Types/Types";
 
 const instance = axios.create({
@@ -189,6 +190,47 @@ export async function EquipmentCreateAPI(equipment: AddEquipmentType) {
 }
 
 // Equipment Instances APIs
+
+export async function EquipmentInstanceAPI(id: number) {
+  const config = await GetConfig();
+  return instance
+    .get(`api/v1/equipments/equipment_instances/${id}`, config)
+    .then((response) => {
+      return response.data as EquipmentInstanceType;
+    })
+    .catch(() => {
+      console.log("Error retrieving equipment");
+    });
+}
+
+export async function EquipmentInstanceUpdateAPI(
+  item: PatchEquipmentInstanceType,
+  id: number
+) {
+  const config = await GetConfig();
+  return instance
+    .patch(`api/v1/equipments/equipment_instances/${id}/`, item, config)
+    .then((response) => {
+      return [true, response.data as EquipmentInstanceType];
+    })
+    .catch((error) => {
+      console.log("Error updating equipment instance");
+      return [false, ParseError(error)];
+    });
+}
+
+export async function EquipmentInstanceRemoveAPI(id: number) {
+  const config = await GetConfig();
+  return instance
+    .delete(`api/v1/equipments/equipment_instances/${id}/`, config)
+    .then((response) => {
+      return [true, response.data];
+    })
+    .catch((error) => {
+      console.log("Error updating equipment instance");
+      return [false, ParseError(error)];
+    });
+}
 
 export async function EquipmentInstancesAPI() {
   const config = await GetConfig();
