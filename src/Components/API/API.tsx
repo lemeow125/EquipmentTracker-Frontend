@@ -9,6 +9,8 @@ import {
   EquipmentInstanceListType,
   EquipmentType,
   AddEquipmentType,
+  AddEquipmentInstanceType,
+  EquipmentInstanceType,
 } from "../Types/Types";
 
 const instance = axios.create({
@@ -56,7 +58,7 @@ export function ParseError(error: { response: { data: string } }) {
       .replace(/\(/g, " ")
       .replace(/\)/g, " ")
       .replace(/"/g, " ")
-      .replace(/,/g, " ")
+      .replace(/,/g, ",")
       .replace(/\[/g, "")
       .replace(/\]/g, "")
       .replace(/\./g, "")
@@ -186,6 +188,8 @@ export async function EquipmentCreateAPI(equipment: AddEquipmentType) {
     });
 }
 
+// Equipment Instances APIs
+
 export async function EquipmentInstancesAPI() {
   const config = await GetConfig();
   return instance
@@ -195,5 +199,20 @@ export async function EquipmentInstancesAPI() {
     })
     .catch(() => {
       console.log("Error retrieving equipments");
+    });
+}
+
+export async function EquipmentInstanceCreateAPI(
+  equipment_instance: AddEquipmentInstanceType
+) {
+  const config = await GetConfig();
+  return instance
+    .post("api/v1/equipments/equipment_instances/", equipment_instance, config)
+    .then((response) => {
+      return [true, response.data as EquipmentInstanceType];
+    })
+    .catch((error) => {
+      console.log("Error creating equipment instance");
+      return [false, ParseError(error)];
     });
 }

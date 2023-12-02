@@ -18,7 +18,7 @@ export default function AddSKUModal() {
   const [sku, setSKU] = useState({
     name: "",
     description: "",
-    category: "",
+    category: "MISC",
   });
   const [error, setError] = useState("");
 
@@ -76,10 +76,11 @@ export default function AddSKUModal() {
           </FormLabel>
           <RadioGroup
             aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="female"
+            defaultValue="MISC"
             name="radio-buttons-group"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               setSKU({ ...sku, category: e.target.value });
+              setError("");
             }}
           >
             <div style={styles.flex_row}>
@@ -144,20 +145,25 @@ export default function AddSKUModal() {
           const data = await EquipmentCreateAPI(sku);
           if (data[0]) {
             setError("Added successfully");
-            toast("New SKU added successfuly", {
-              position: "top-right",
-              autoClose: 2000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
+            toast(
+              `New SKU added successfuly,  ${
+                typeof data[1] == "object" ? "ID:" + data[1].id : ""
+              }`,
+              {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              }
+            );
             queryClient.invalidateQueries({ queryKey: ["equipments"] });
-            setSKU({ name: "", description: "", category: "" });
+            setSKU({ name: "", description: "", category: "MISC" });
           } else {
-            setError(JSON.stringify(data));
+            setError(JSON.stringify(data[1]));
           }
         }}
       />

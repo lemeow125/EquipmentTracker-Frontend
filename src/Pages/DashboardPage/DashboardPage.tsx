@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AddSKUModal from "../../Components/AddSKUModal/AddSKUModal";
 import Popup from "reactjs-popup";
+import AddItemModal from "../../Components/AddItemModal/AddItemModal";
 export default function Dashboard() {
   const navigate = useNavigate();
 
@@ -180,7 +181,7 @@ export default function Dashboard() {
             >
               {queries[1].data
                 ? queries[1].data.filter(
-                    (equipment) => equipment.status == "Working"
+                    (equipment) => equipment.status == "WORKING"
                   ).length
                 : 0}
             </p>
@@ -215,7 +216,7 @@ export default function Dashboard() {
             >
               {queries[1].data
                 ? queries[1].data.filter(
-                    (equipment) => equipment.status == "Broken"
+                    (equipment) => equipment.status == "BROKEN"
                   ).length
                 : 0}
             </p>
@@ -281,7 +282,7 @@ export default function Dashboard() {
             },
           }}
           onClick={() => {
-            navigate("/add/equipment_instance");
+            SetAddItemModalOpen(true);
           }}
         >
           <AddToQueueIcon
@@ -508,6 +509,25 @@ export default function Dashboard() {
         }}
       >
         <AddSKUModal />
+      </Popup>
+      <Popup
+        open={additemmodalOpen}
+        onClose={() => SetAddItemModalOpen(false)}
+        modal
+        position={"top center"}
+        contentStyle={{
+          width: "512px",
+          borderRadius: 16,
+          borderColor: "grey",
+          borderStyle: "solid",
+          borderWidth: 1,
+          padding: 16,
+          alignContent: "center",
+          justifyContent: "center",
+          textAlign: "center",
+        }}
+      >
+        <AddItemModal />
       </Popup>
     </div>
   );
