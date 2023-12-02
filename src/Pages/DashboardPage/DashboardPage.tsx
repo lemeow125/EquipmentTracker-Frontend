@@ -18,6 +18,7 @@ export default function Dashboard() {
     ],
   });
   const isLoading = queries.some((result) => result.isLoading);
+  
   if (isLoading) {
     return (
       <div style={styles.background}>
@@ -49,7 +50,7 @@ export default function Dashboard() {
     <div style={styles.background}>
       <Header label={"Dashboard"} />
       <div style={styles.flex_column}>
-        <div style={{ ...styles.flex_row, ...{ alignSelf: "center" } }}>
+        <div style={{ ...styles.flex_row, ...{ alignSelf: "center", justifyContent:'center',flexWrap:'wrap' } }}>
           <div
             style={{
               paddingLeft: "16px",
@@ -59,7 +60,7 @@ export default function Dashboard() {
               backgroundColor: "#a6a6a6",
               alignSelf: "center",
               justifyContent: "center",
-              width: "512px",
+              width: "32rem",
             }}
           >
             <p
@@ -69,7 +70,7 @@ export default function Dashboard() {
                 ...{ float: "left", position: "absolute" },
               }}
             >
-              Item Types in System
+             Equipment Types in Database
             </p>
 
             <p
@@ -90,7 +91,7 @@ export default function Dashboard() {
               backgroundColor: "#a6a6a6",
               alignSelf: "center",
               justifyContent: "center",
-              width: "512px",
+              width: "32rem",
             }}
           >
             <p
@@ -100,7 +101,7 @@ export default function Dashboard() {
                 ...{ float: "left", position: "absolute" },
               }}
             >
-              Unique Items in System
+              Equipment Count
             </p>
 
             <p
@@ -113,7 +114,7 @@ export default function Dashboard() {
             </p>
           </div>
         </div>
-        <div style={{ ...styles.flex_row, ...{ alignSelf: "center" } }}>
+        <div style={{ ...styles.flex_row, ...{ alignSelf: "center",justifyContent:'center', flexWrap:'wrap' } }}>
           <div
             style={{
               paddingLeft: "16px",
@@ -123,7 +124,7 @@ export default function Dashboard() {
               backgroundColor: "#a6a6a6",
               alignSelf: "center",
               justifyContent: "center",
-              width: "512px",
+              width: "32rem",
             }}
           >
             <p
@@ -158,7 +159,7 @@ export default function Dashboard() {
               backgroundColor: "#a6a6a6",
               alignSelf: "center",
               justifyContent: "center",
-              width: "512px",
+              width: "32rem",
             }}
           >
             <p
