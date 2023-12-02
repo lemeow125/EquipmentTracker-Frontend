@@ -14,7 +14,7 @@ export default function Header(props: props) {
       style={{
         position: "sticky",
         top: 0,
-        zIndex: -1,
+        zIndex: 1,
         backgroundColor: colors.header_color,
         display: "flex",
         flexDirection: "row",

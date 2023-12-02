@@ -20,6 +20,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     width: "100%",
     minHeight: "100%",
     minWidth: "100%",
+    overflowY: "scroll",
   },
   text_dark: {
     color: colors.font_dark,

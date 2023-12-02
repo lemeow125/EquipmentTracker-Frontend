@@ -2,8 +2,14 @@ import Header from "../../Components/Header/Header";
 import styles from "../../styles";
 import { useQueries } from "@tanstack/react-query";
 import { EquipmentsAPI, EquipmentInstancesAPI } from "../../Components/API/API";
-import { CircularProgress } from "@mui/material";
-
+import { Button, CircularProgress } from "@mui/material";
+import ComputerIcon from "@mui/icons-material/Computer";
+import RouterIcon from "@mui/icons-material/Router";
+import CameraOutdoorIcon from "@mui/icons-material/CameraOutdoor";
+import ChairIcon from "@mui/icons-material/Chair";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import AddToQueueIcon from "@mui/icons-material/AddToQueue";
+import { colors } from "../../styles";
 export default function Dashboard() {
   const queries = useQueries({
     queries: [
@@ -18,7 +24,7 @@ export default function Dashboard() {
     ],
   });
   const isLoading = queries.some((result) => result.isLoading);
-  
+
   if (isLoading) {
     return (
       <div style={styles.background}>
@@ -50,7 +56,16 @@ export default function Dashboard() {
     <div style={styles.background}>
       <Header label={"Dashboard"} />
       <div style={styles.flex_column}>
-        <div style={{ ...styles.flex_row, ...{ alignSelf: "center", justifyContent:'center',flexWrap:'wrap' } }}>
+        <div
+          style={{
+            ...styles.flex_row,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+        >
           <div
             style={{
               paddingLeft: "16px",
@@ -70,7 +85,7 @@ export default function Dashboard() {
                 ...{ float: "left", position: "absolute" },
               }}
             >
-             Equipment Types in Database
+              Equipment Types in Database
             </p>
 
             <p
@@ -114,7 +129,16 @@ export default function Dashboard() {
             </p>
           </div>
         </div>
-        <div style={{ ...styles.flex_row, ...{ alignSelf: "center",justifyContent:'center', flexWrap:'wrap' } }}>
+        <div
+          style={{
+            ...styles.flex_row,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+        >
           <div
             style={{
               paddingLeft: "16px",
@@ -186,6 +210,206 @@ export default function Dashboard() {
             </p>
           </div>
         </div>
+      </div>
+      <p
+        style={{
+          ...styles.text_dark,
+          ...styles.text_L,
+        }}
+      >
+        Equipments
+      </p>
+      <div
+        style={{
+          ...styles.flex_row,
+          ...{
+            alignSelf: "center",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          },
+        }}
+      >
+        <Button
+          style={{
+            ...styles.flex_column,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+        >
+          <FormatListBulletedIcon
+            style={{
+              height: 64,
+              width: 64,
+              fill: colors.font_dark,
+              marginLeft: "1rem",
+              marginRight: "1rem",
+            }}
+          />
+          <p
+            style={{
+              ...styles.text_dark,
+              ...styles.text_M,
+            }}
+          >
+            View All
+          </p>
+        </Button>
+        <Button
+          style={{
+            ...styles.flex_column,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+        >
+          <AddToQueueIcon
+            style={{
+              height: 64,
+              width: 64,
+              fill: colors.font_dark,
+              marginLeft: "1rem",
+              marginRight: "1rem",
+            }}
+          />
+          <p
+            style={{
+              ...styles.text_dark,
+              ...styles.text_M,
+            }}
+          >
+            Add Equipment
+          </p>
+        </Button>
+      </div>
+
+      <div
+        style={{
+          ...styles.flex_row,
+          ...{
+            alignSelf: "center",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          },
+        }}
+      >
+        <Button
+          style={{
+            ...styles.flex_column,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+        >
+          <ComputerIcon
+            style={{
+              height: 64,
+              width: 64,
+              fill: colors.font_dark,
+              marginLeft: "1rem",
+              marginRight: "1rem",
+            }}
+          />
+          <p
+            style={{
+              ...styles.text_dark,
+              ...styles.text_M,
+            }}
+          >
+            Workstations
+          </p>
+        </Button>
+        <Button
+          style={{
+            ...styles.flex_column,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+        >
+          <RouterIcon
+            style={{
+              height: 64,
+              width: 64,
+              fill: colors.font_dark,
+              marginLeft: "1rem",
+              marginRight: "1rem",
+            }}
+          />
+          <p
+            style={{
+              ...styles.text_dark,
+              ...styles.text_M,
+            }}
+          >
+            Networking
+          </p>
+        </Button>
+
+        <Button
+          style={{
+            ...styles.flex_column,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+        >
+          <CameraOutdoorIcon
+            style={{
+              height: 64,
+              width: 64,
+              fill: colors.font_dark,
+              marginLeft: "1rem",
+              marginRight: "1rem",
+            }}
+          />
+          <p
+            style={{
+              ...styles.text_dark,
+              ...styles.text_M,
+            }}
+          >
+            CCTVs
+          </p>
+        </Button>
+        <Button
+          style={{
+            ...styles.flex_column,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+        >
+          <ChairIcon
+            style={{
+              height: 64,
+              width: 64,
+              fill: colors.font_dark,
+              marginLeft: "1rem",
+              marginRight: "1rem",
+            }}
+          />
+          <p
+            style={{
+              ...styles.text_dark,
+              ...styles.text_M,
+            }}
+          >
+            Furniture
+          </p>
+        </Button>
       </div>
     </div>
   );
