@@ -128,7 +128,7 @@ export default function Dashboard() {
                 ...{ float: "left", position: "absolute" },
               }}
             >
-              Item Count
+              Items in Database
             </p>
 
             <p
@@ -170,7 +170,7 @@ export default function Dashboard() {
                 ...{ float: "left", position: "absolute" },
               }}
             >
-              Functional Item
+              Functional Items
             </p>
 
             <p
