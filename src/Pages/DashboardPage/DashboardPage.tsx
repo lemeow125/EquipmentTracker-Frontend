@@ -9,6 +9,7 @@ import CameraOutdoorIcon from "@mui/icons-material/CameraOutdoor";
 import ChairIcon from "@mui/icons-material/Chair";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import AddToQueueIcon from "@mui/icons-material/AddToQueue";
+import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import { colors } from "../../styles";
 import { useNavigate } from "react-router-dom";
 export default function Dashboard() {
@@ -88,7 +89,7 @@ export default function Dashboard() {
                 ...{ float: "left", position: "absolute" },
               }}
             >
-              Equipment Types in Database
+              SKUs in Database
             </p>
 
             <p
@@ -119,7 +120,7 @@ export default function Dashboard() {
                 ...{ float: "left", position: "absolute" },
               }}
             >
-              Equipment Count
+              Item Count
             </p>
 
             <p
@@ -161,7 +162,7 @@ export default function Dashboard() {
                 ...{ float: "left", position: "absolute" },
               }}
             >
-              Working Items
+              Functional Item
             </p>
 
             <p
@@ -291,7 +292,38 @@ export default function Dashboard() {
               ...styles.text_M,
             }}
           >
-            Add Equipment
+            Add Item
+          </p>
+        </Button>
+        <Button
+          style={{
+            ...styles.flex_column,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+          onClick={() => {
+            navigate("/add/equipment");
+          }}
+        >
+          <NoteAddIcon
+            style={{
+              height: 64,
+              width: 64,
+              fill: colors.font_dark,
+              marginLeft: "1rem",
+              marginRight: "1rem",
+            }}
+          />
+          <p
+            style={{
+              ...styles.text_dark,
+              ...styles.text_M,
+            }}
+          >
+            Add SKU
           </p>
         </Button>
       </div>
