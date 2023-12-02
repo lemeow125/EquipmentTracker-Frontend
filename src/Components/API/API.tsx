@@ -15,8 +15,17 @@ import {
   PatchEquipmentType,
 } from "../Types/Types";
 
+const debug = false;
+let backendURL;
+
+if (debug) {
+  backendURL = "http://localhost:8000/";
+} else {
+  backendURL = "https://equipment-tracker-backend.keannu1.duckdns.org/";
+}
+
 const instance = axios.create({
-  baseURL: "http://localhost:8000/",
+  baseURL: backendURL,
 });
 
 // Token Handling
@@ -136,9 +145,11 @@ export function ActivationAPI(activation: ActivationType) {
     .post("api/v1/accounts/users/activation/", activation)
     .then(() => {
       console.log("Activation Success");
+      return true;
     })
     .catch(() => {
       console.log("Activation failed");
+      return false;
     });
 }
 export function ResetPasswordAPI(email: string) {
@@ -146,9 +157,11 @@ export function ResetPasswordAPI(email: string) {
     .post("api/v1/accounts/users/reset_password/", { email: email })
     .then(() => {
       console.log("Activation Success");
+      return true;
     })
     .catch(() => {
       console.log("Activation failed");
+      return false;
     });
 }
 
@@ -157,9 +170,11 @@ export function ResetPasswordConfirmAPI(info: ResetPasswordConfirmType) {
     .post("api/v1/accounts/users/reset_password_confirm/", info)
     .then(() => {
       console.log("Reset Success");
+      return true;
     })
     .catch(() => {
       console.log("Reset failed");
+      return false;
     });
 }
 

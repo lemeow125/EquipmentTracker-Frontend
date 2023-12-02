@@ -87,7 +87,7 @@ export default function Dashboard() {
               backgroundColor: "#a6a6a6",
               alignSelf: "center",
               justifyContent: "center",
-              width: "32rem",
+              width: "16rem",
             }}
           >
             <p
@@ -118,7 +118,7 @@ export default function Dashboard() {
               backgroundColor: "#a6a6a6",
               alignSelf: "center",
               justifyContent: "center",
-              width: "32rem",
+              width: "16rem",
             }}
           >
             <p
@@ -160,7 +160,7 @@ export default function Dashboard() {
               backgroundColor: "#a6a6a6",
               alignSelf: "center",
               justifyContent: "center",
-              width: "32rem",
+              width: "16rem",
             }}
           >
             <p
@@ -195,7 +195,7 @@ export default function Dashboard() {
               backgroundColor: "#a6a6a6",
               alignSelf: "center",
               justifyContent: "center",
-              width: "32rem",
+              width: "16rem",
             }}
           >
             <p
@@ -497,7 +497,7 @@ export default function Dashboard() {
         modal
         position={"top center"}
         contentStyle={{
-          width: "512px",
+          width: "32rem",
           borderRadius: 16,
           borderColor: "grey",
           borderStyle: "solid",
@@ -516,7 +516,7 @@ export default function Dashboard() {
         modal
         position={"top center"}
         contentStyle={{
-          width: "512px",
+          width: "32rem",
           borderRadius: 16,
           borderColor: "grey",
           borderStyle: "solid",
