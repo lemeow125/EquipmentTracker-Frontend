@@ -12,6 +12,7 @@ import {
   AddEquipmentInstanceType,
   EquipmentInstanceType,
   PatchEquipmentInstanceType,
+  PatchEquipmentType,
 } from "../Types/Types";
 
 const instance = axios.create({
@@ -164,6 +165,47 @@ export function ResetPasswordConfirmAPI(info: ResetPasswordConfirmType) {
 
 // Equipment APIs
 
+export async function EquipmentAPI(id: number) {
+  const config = await GetConfig();
+  return instance
+    .get(`api/v1/equipments/equipments/${id}/`, config)
+    .then((response) => {
+      return response.data as EquipmentType;
+    })
+    .catch(() => {
+      console.log("Error retrieving equipment");
+    });
+}
+
+export async function EquipmentUpdateAPI(
+  equipment: PatchEquipmentType,
+  id: number
+) {
+  const config = await GetConfig();
+  return instance
+    .patch(`api/v1/equipments/equipments/${id}/`, equipment, config)
+    .then((response) => {
+      return [true, response.data as EquipmentType];
+    })
+    .catch((error) => {
+      console.log("Error updating equipment instance");
+      return [false, ParseError(error)];
+    });
+}
+
+export async function EquipmentRemoveAPI(id: number) {
+  const config = await GetConfig();
+  return instance
+    .delete(`api/v1/equipments/equipments/${id}/`, config)
+    .then((response) => {
+      return [true, response.data as EquipmentType];
+    })
+    .catch((error) => {
+      console.log("Error deleting equipment instance");
+      return [false, ParseError(error)];
+    });
+}
+
 export async function EquipmentsAPI() {
   const config = await GetConfig();
   return instance
@@ -194,7 +236,7 @@ export async function EquipmentCreateAPI(equipment: AddEquipmentType) {
 export async function EquipmentInstanceAPI(id: number) {
   const config = await GetConfig();
   return instance
-    .get(`api/v1/equipments/equipment_instances/${id}`, config)
+    .get(`api/v1/equipments/equipment_instances/${id}/`, config)
     .then((response) => {
       return response.data as EquipmentInstanceType;
     })
@@ -227,7 +269,7 @@ export async function EquipmentInstanceRemoveAPI(id: number) {
       return [true, response.data];
     })
     .catch((error) => {
-      console.log("Error updating equipment instance");
+      console.log("Error deleting equipment instance");
       return [false, ParseError(error)];
     });
 }

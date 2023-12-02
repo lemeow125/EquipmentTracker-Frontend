@@ -11,8 +11,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { colors } from "../../styles";
+import EditSKUModal from "../../Components/EditSKUModal/EditSKUModal";
+import Popup from "reactjs-popup";
+import { useState } from "react";
 
 export default function EquipmentListPage() {
+  const [editmodalOpen, SetEditModalOpen] = useState(false);
+  const [selectedItem, SetSelectedItem] = useState(0);
   const equipments = useQuery({
     queryKey: ["equipments"],
     queryFn: EquipmentsAPI,
@@ -74,6 +79,9 @@ export default function EquipmentListPage() {
                     Description
                   </TableCell>
                   <TableCell align="center" style={styles.text_light}>
+                    Category
+                  </TableCell>
+                  <TableCell align="center" style={styles.text_light}>
                     Last Modified
                   </TableCell>
                 </TableRow>
@@ -85,7 +93,8 @@ export default function EquipmentListPage() {
                       key={equipment.id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                       onClick={() => {
-                        console.log("HEH");
+                        SetSelectedItem(equipment.id);
+                        SetEditModalOpen(true);
                       }}
                     >
                       <TableCell align="center" component="th" scope="row">
@@ -97,6 +106,9 @@ export default function EquipmentListPage() {
 
                       <TableCell align="center" component="th" scope="row">
                         {equipment.description}
+                      </TableCell>
+                      <TableCell align="center" component="th" scope="row">
+                        {equipment.category}
                       </TableCell>
                       <TableCell align="right">
                         <div
@@ -123,6 +135,25 @@ export default function EquipmentListPage() {
           </TableContainer>
         </div>
       </div>
+      <Popup
+        open={editmodalOpen}
+        onClose={() => SetEditModalOpen(false)}
+        modal
+        position={"top center"}
+        contentStyle={{
+          width: "512px",
+          borderRadius: 16,
+          borderColor: "grey",
+          borderStyle: "solid",
+          borderWidth: 1,
+          padding: 16,
+          alignContent: "center",
+          justifyContent: "center",
+          textAlign: "center",
+        }}
+      >
+        <EditSKUModal id={selectedItem} setOpen={SetEditModalOpen} />
+      </Popup>
     </div>
   );
 }

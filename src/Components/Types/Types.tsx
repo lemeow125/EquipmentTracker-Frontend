@@ -28,6 +28,12 @@ export type AddEquipmentType = {
   category?: string;
 };
 
+export type PatchEquipmentType = {
+  name: string;
+  description: string;
+  category?: string;
+};
+
 export type EquipmentType = {
   id: number;
   name: string;
@@ -35,6 +41,7 @@ export type EquipmentType = {
   last_updated: string;
   last_updated_by: string;
   date_added: string;
+  category: string;
 };
 
 export type EquipmentListType = Array<EquipmentType>;
