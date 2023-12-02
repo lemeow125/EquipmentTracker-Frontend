@@ -48,11 +48,13 @@ export type AddEquipmentInstanceType = {
 export type EquipmentInstanceType = {
   id: number;
   equipment: string;
+  equipment_name: string;
   status: string;
   remarks: string;
   last_updated: string;
   last_updated_by: string;
   date_added: string;
+  category: string;
 };
 
 export type EquipmentInstanceListType = Array<EquipmentInstanceType>;

@@ -36,7 +36,6 @@ export default function Revalidator() {
       JWTRefreshAPI().then(async (response) => {
         if (response) {
           await dispatch(auth_toggle());
-          navigate("/dashboard");
           toast("User session restored", {
             position: "top-right",
             autoClose: 2000,
