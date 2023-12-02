@@ -141,7 +141,7 @@ export default function EquipmentListPage() {
         modal
         position={"top center"}
         contentStyle={{
-          width: "512px",
+          width: "32rem",
           borderRadius: 16,
           borderColor: "grey",
           borderStyle: "solid",
@@ -150,6 +150,7 @@ export default function EquipmentListPage() {
           alignContent: "center",
           justifyContent: "center",
           textAlign: "center",
+          flexWrap: "wrap",
         }}
       >
         <EditSKUModal id={selectedItem} setOpen={SetEditModalOpen} />
