@@ -20,7 +20,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CircularProgress } from "@mui/material";
 import React from "react";
 
-export default function EditItemModal(props: {
+export default function EditItemInstanceModal(props: {
   id: number;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {

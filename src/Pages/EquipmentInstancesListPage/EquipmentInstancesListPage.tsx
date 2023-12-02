@@ -11,7 +11,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { colors } from "../../styles";
-import EditItemModal from "../../Components/EditItemModal/EditItemModal";
+import EditItemModal from "../../Components/EditItemInstanceModal/EditItemInstanceModal";
 import { useState } from "react";
 import Popup from "reactjs-popup";
 
