@@ -44,6 +44,7 @@ export default function EditItemInstanceModal(props: {
         status: equipment.data.status,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [equipment.data]);
 
   const update_mutation = useMutation({

@@ -46,6 +46,7 @@ export default function EditSKUModal(props: {
         category: equipment.data.category,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [equipment.data]);
 
   const update_mutation = useMutation({
