@@ -140,18 +140,7 @@ export default function EquipmentListPage() {
         onClose={() => SetEditModalOpen(false)}
         modal
         position={"top center"}
-        contentStyle={{
-          width: "32rem",
-          borderRadius: 16,
-          borderColor: "grey",
-          borderStyle: "solid",
-          borderWidth: 1,
-          padding: 16,
-          alignContent: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          flexWrap: "wrap",
-        }}
+        contentStyle={styles.popup_center}
       >
         <EditSKUModal id={selectedItem} setOpen={SetEditModalOpen} />
       </Popup>

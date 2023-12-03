@@ -39,14 +39,11 @@ export default function LandingPage() {
           flexWrap: "wrap",
         }}
       >
-        <div
-          style={{ maxWidth: "50%", height: "auto", flex: 1, flexWrap: "wrap" }}
-        >
-          <img style={{ maxWidth: "50%", height: "auto" }} src={citc_logo} />
+        <div style={{ height: "auto", flex: 1, flexWrap: "wrap" }}>
+          <img style={{ width: "16rem", height: "auto" }} src={citc_logo} />
         </div>
         <div
           style={{
-            maxWidth: "50%",
             height: "auto",
             flex: 1,
             flexWrap: "wrap",

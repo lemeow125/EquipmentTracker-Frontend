@@ -75,6 +75,18 @@ const styles: { [key: string]: React.CSSProperties } = {
     minWidth: "100%",
     marginTop: 16,
   },
+  popup_center: {
+    width: "32rem",
+    borderRadius: 16,
+    borderColor: "grey",
+    borderStyle: "solid",
+    borderWidth: 1,
+    padding: 16,
+    alignContent: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    overflowY: "scroll",
+  },
 };
 
 export default styles;
