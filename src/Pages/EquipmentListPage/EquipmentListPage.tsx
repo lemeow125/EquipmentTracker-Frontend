@@ -63,10 +63,9 @@ export default function EquipmentListPage() {
           minHeight: "100%",
           minWidth: "100%",
           flexWrap: "wrap",
-          overflowY: "scroll",
         }}
       >
-        <div style={{ width: "90%" }}>
+        <div style={{ width: "90%", overflowY: "scroll", marginTop: "2rem" }}>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: "32rem" }} size="medium">
               <TableHead>

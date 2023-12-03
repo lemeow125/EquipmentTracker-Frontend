@@ -46,6 +46,18 @@ export type EquipmentType = {
 
 export type EquipmentListType = Array<EquipmentType>;
 
+export type EquipmentLogType = {
+  history_id: number;
+  id: number;
+  name: string;
+  category: string;
+  description: string;
+  history_date: string;
+  history_user: string;
+};
+
+export type EquipmentLogListType = Array<EquipmentLogType>;
+
 export type AddEquipmentInstanceType = {
   equipment: number;
   status: string;
@@ -70,3 +82,17 @@ export type EquipmentInstanceType = {
 };
 
 export type EquipmentInstanceListType = Array<EquipmentInstanceType>;
+
+export type EquipmentInstanceLogType = {
+  history_id: number;
+  id: number;
+  equipment: number;
+  equipment_name: string;
+  category: string;
+  status: string;
+  remarks: string;
+  history_date: string;
+  history_user: string;
+};
+
+export type EquipmentInstanceLogListType = Array<EquipmentInstanceLogType>;

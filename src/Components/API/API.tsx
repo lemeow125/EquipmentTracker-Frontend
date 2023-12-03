@@ -13,6 +13,8 @@ import {
   EquipmentInstanceType,
   PatchEquipmentInstanceType,
   PatchEquipmentType,
+  EquipmentLogListType,
+  EquipmentInstanceLogListType,
 } from "../Types/Types";
 
 const debug = false;
@@ -246,8 +248,31 @@ export async function EquipmentCreateAPI(equipment: AddEquipmentType) {
     });
 }
 
+export async function EquipmentLogsAPI() {
+  const config = await GetConfig();
+  return instance
+    .get("api/v1/equipments/equipments/logs", config)
+    .then((response) => {
+      return response.data as EquipmentLogListType;
+    })
+    .catch(() => {
+      console.log("Error retrieving equipment logs");
+    });
+}
+
 // Equipment Instances APIs
 
+export async function EquipmentInstanceLogsAPI() {
+  const config = await GetConfig();
+  return instance
+    .get("api/v1/equipments/equipment_instances/logs", config)
+    .then((response) => {
+      return response.data as EquipmentInstanceLogListType;
+    })
+    .catch(() => {
+      console.log("Error retrieving equipment logs");
+    });
+}
 export async function EquipmentInstanceAPI(id: number) {
   const config = await GetConfig();
   return instance

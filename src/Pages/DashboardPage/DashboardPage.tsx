@@ -11,6 +11,7 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import AddToQueueIcon from "@mui/icons-material/AddToQueue";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import NoteIcon from "@mui/icons-material/Note";
+import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import { colors } from "../../styles";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -488,6 +489,87 @@ export default function Dashboard() {
             }}
           >
             Furniture
+          </p>
+        </Button>
+      </div>
+      <p
+        style={{
+          ...styles.text_dark,
+          ...styles.text_L,
+        }}
+      >
+        Logs
+      </p>
+      <div
+        style={{
+          ...styles.flex_row,
+          ...{
+            alignSelf: "center",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          },
+        }}
+      >
+        <Button
+          style={{
+            ...styles.flex_column,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+          onClick={() => {
+            navigate("/view/equipments/logs");
+          }}
+        >
+          <ManageSearchIcon
+            style={{
+              height: 64,
+              width: 64,
+              fill: colors.font_dark,
+              marginLeft: "1rem",
+              marginRight: "1rem",
+            }}
+          />
+          <p
+            style={{
+              ...styles.text_dark,
+              ...styles.text_M,
+            }}
+          >
+            SKU Logs
+          </p>
+        </Button>
+        <Button
+          style={{
+            ...styles.flex_column,
+            ...{
+              alignSelf: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            },
+          }}
+          onClick={() => {
+            navigate("/view/equipment_instances/logs");
+          }}
+        >
+          <ManageSearchIcon
+            style={{
+              height: 64,
+              width: 64,
+              fill: colors.font_dark,
+              marginLeft: "1rem",
+              marginRight: "1rem",
+            }}
+          />
+          <p
+            style={{
+              ...styles.text_dark,
+              ...styles.text_M,
+            }}
+          >
+            Item Logs
           </p>
         </Button>
       </div>
