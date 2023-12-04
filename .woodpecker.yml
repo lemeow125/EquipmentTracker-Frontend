@@ -15,4 +15,4 @@ steps:
       - chmod 600 /root/.ssh/id_rsa
       - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > /root/.ssh/config
       - scp -r dist/* username@10.0.10.4:/mnt/sda1/projects/equipment_tracker_frontend
-    secrets: [SSH_KEY TEST]
+    secrets: [SSH_KEY, TEST]
