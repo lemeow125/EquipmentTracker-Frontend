@@ -1,4 +1,5 @@
-pipeline:
+# .woodpecker.yml
+steps:
   - name: build
     image: node:14
     commands:
@@ -6,9 +7,6 @@ pipeline:
       - npm run build
   - name: copy
     image: alpine
-    environment:
-      - SSH_KEY:
-          from_secret: ssh_key
     commands:
       - apk add --no-cache openssh-client
       - echo "$SSH_KEY" | tr -d '\r' > /root/.ssh/id_rsa
