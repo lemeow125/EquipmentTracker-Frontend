@@ -7,10 +7,11 @@ steps:
       - npm run build
   - name: copy
     image: alpine
+    secrets: [SSH_KEY]
     commands:
       - apk add --no-cache openssh-client
       - mkdir -p /root/.ssh/
-      - echo "$SSH_KEY" | tr -d '\r' > /root/.ssh/id_rsa
+      - echo "$${SSH_KEY}" | tr -d '\r' > /root/.ssh/id_rsa
       - chmod 600 /root/.ssh/id_rsa
       - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > /root/.ssh/config
       - scp -r dist/* username@10.0.10.4:/mnt/sda1/projects/equipment_tracker_frontend
