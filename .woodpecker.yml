@@ -1,7 +1,7 @@
 # .woodpecker.yml
 steps:
   - name: build
-    image: node:14
+    image: node:18
     commands:
       - npm install
       - npm run build
