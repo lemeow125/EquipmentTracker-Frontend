@@ -1,17 +1,14 @@
 # .woodpecker.yml
 steps:
-  - name: build
-    image: node:18
-    commands:
-      - npm install
-      - npm run build
-  - name: copy
-    image: alpine
+  - name: build & copy
+    image: node:18-alpine
     commands:
       - apk add --no-cache openssh-client
       - mkdir -p /root/.ssh/
       - echo "$SSH_KEY" | tr -d '\r' > /root/.ssh/id_rsa
       - chmod 600 /root/.ssh/id_rsa
       - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > /root/.ssh/config
+      - npm install
+      - npm run build
       - scp -r dist/* root@10.0.10.4:/mnt/sda1/files/projects/equipment_tracker_frontend
     secrets: [SSH_KEY]

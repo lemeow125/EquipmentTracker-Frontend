@@ -65,7 +65,7 @@ export default function LandingPage() {
             <p style={{ ...styles.text_dark, ...styles.text_L }}>
               CITC EQUIPMENT
               <br />
-              TRACKER
+              TRACKER TEST
             </p>
             <div style={{ ...styles.flex_column }}>
               <Button
