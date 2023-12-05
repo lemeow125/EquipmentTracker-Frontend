@@ -396,6 +396,9 @@ export default function Dashboard() {
               marginLeft: "1rem",
               marginRight: "1rem",
             }}
+            onClick={() => {
+              navigate("/view/equipment_instances/filter/PC");
+            }}
           />
           <p
             style={{
@@ -424,6 +427,9 @@ export default function Dashboard() {
               marginLeft: "1rem",
               marginRight: "1rem",
             }}
+            onClick={() => {
+              navigate("/view/equipment_instances/filter/NETWORKING");
+            }}
           />
           <p
             style={{
@@ -443,6 +449,9 @@ export default function Dashboard() {
               justifyContent: "center",
               flexWrap: "wrap",
             },
+          }}
+          onClick={() => {
+            navigate("/view/equipment_instances/filter/CCTV");
           }}
         >
           <CameraOutdoorIcon
@@ -480,6 +489,9 @@ export default function Dashboard() {
               fill: colors.font_dark,
               marginLeft: "1rem",
               marginRight: "1rem",
+            }}
+            onClick={() => {
+              navigate("/view/equipment_instances/filter/FURNITURE");
             }}
           />
           <p
