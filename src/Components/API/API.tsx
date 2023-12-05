@@ -17,7 +17,7 @@ import {
   EquipmentInstanceLogListType,
 } from "../Types/Types";
 
-const debug = true;
+const debug = false;
 let backendURL;
 
 if (debug) {
