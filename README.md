@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-![Build Status](https://github.woodpecker.keannu3.duckdns.org/api/badges/1/status.svg)
+[![status-badge](https://github.woodpecker.keannu3.duckdns.org/api/badges/2/status.svg)](https://github.woodpecker.keannu3.duckdns.org/repos/2)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
