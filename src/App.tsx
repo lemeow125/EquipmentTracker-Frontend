@@ -15,6 +15,7 @@ import EquipmentInstancesListPage from "./Pages/EquipmentInstancesListPage/Equip
 import EquipmentListPage from "./Pages/EquipmentListPage/EquipmentListPage";
 import EquipmentLogsPage from "./Pages/EquipmentLogsPage/EquipmentLogsPage";
 import EquipmentInstanceLogsPage from "./Pages/EquipmentInstanceLogsPage/EquipmentInstanceLogsPage";
+import EquipmentInstancesFilteredListPage from "./Pages/EquipmentInstancesListPage/EquipmentInstancesFilteredListPage";
 
 const queryClient = new QueryClient();
 const router = createHashRouter([
@@ -44,6 +45,16 @@ const router = createHashRouter([
       <>
         <Revalidator />
         <EquipmentInstancesListPage />
+      </>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/view/equipment_instances/filter/:filter_by",
+    element: (
+      <>
+        <Revalidator />
+        <EquipmentInstancesFilteredListPage />
       </>
     ),
     errorElement: <ErrorPage />,
