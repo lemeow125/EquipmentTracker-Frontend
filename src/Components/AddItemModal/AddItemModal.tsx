@@ -34,6 +34,7 @@ export default function AddItemModal() {
     if (equipments.data) {
       setItem({ ...item, equipment: equipments.data[0].id });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [equipments.data]);
   if (equipments.isLoading) {
     return (
