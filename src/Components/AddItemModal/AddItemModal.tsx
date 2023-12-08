@@ -34,7 +34,7 @@ export default function AddItemModal() {
     if (equipments.data) {
       setItem({ ...item, equipment: equipments.data[0].id });
     }
-  }, [equipments.data, item]);
+  }, [equipments.data]);
   if (equipments.isLoading) {
     return (
       <div
