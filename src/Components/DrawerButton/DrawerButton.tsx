@@ -21,8 +21,8 @@ export default function DrawerButton(props: props) {
       onMouseLeave={() => setClicked(false)}
       style={{
         borderRadius: 24,
-        minWidth: "160px",
-        maxWidth: "160px",
+        minWidth: "132px",
+        maxWidth: "132px",
         borderColor: colors.button_border,
         borderStyle: "solid",
         borderWidth: "2px",
