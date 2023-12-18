@@ -10,5 +10,6 @@ steps:
       - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > /root/.ssh/config
       - npm install
       - npm run build
+      - ssh root@10.0.10.4 'rm -rf /mnt/sda1/files/projects/equipment_tracker_frontend/*'
       - scp -r dist/* root@10.0.10.4:/mnt/sda1/files/projects/equipment_tracker_frontend
     secrets: [SSH_KEY]
