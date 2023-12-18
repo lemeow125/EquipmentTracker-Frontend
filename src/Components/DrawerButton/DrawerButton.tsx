@@ -10,42 +10,39 @@ export interface props {
 export default function DrawerButton(props: props) {
   const [clicked, setClicked] = useState(false);
   return (
-    <div>
-      <button
-        onClick={props.onClick}
-        onMouseDown={() => {
-          if (!clicked) {
-            setClicked(!clicked);
-          }
-        }}
-        onMouseUp={() => setClicked(false)}
-        onMouseLeave={() => setClicked(false)}
+    <button
+      onClick={props.onClick}
+      onMouseDown={() => {
+        if (!clicked) {
+          setClicked(!clicked);
+        }
+      }}
+      onMouseUp={() => setClicked(false)}
+      onMouseLeave={() => setClicked(false)}
+      style={{
+        borderRadius: 24,
+        minWidth: "160px",
+        maxWidth: "160px",
+        borderColor: colors.button_border,
+        borderStyle: "solid",
+        borderWidth: "2px",
+        paddingBottom: 0,
+        paddingTop: 0,
+        paddingLeft: "4px",
+        marginBottom: "4px",
+        marginTop: "4px",
+        backgroundColor: clicked ? colors.button_dark : colors.button_light,
+      }}
+    >
+      <p
         style={{
-          borderRadius: 24,
-          minWidth: "192px",
-          maxWidth: "192px",
-          borderColor: colors.button_border,
-          borderStyle: "solid",
-          borderWidth: "2px",
-          paddingBottom: 0,
-          paddingTop: 0,
-          paddingRight: "4px",
-          paddingLeft: "4px",
-          marginBottom: "4px",
-          marginTop: "4px",
-          backgroundColor: clicked ? colors.button_dark : colors.button_light,
+          ...(clicked ? styles.text_light : styles.text_dark),
+          ...styles.text_M,
+          ...{ textAlign: "left", marginLeft: "16px" },
         }}
       >
-        <p
-          style={{
-            ...(clicked ? styles.text_light : styles.text_dark),
-            ...styles.text_M,
-            ...{ textAlign: "left", marginLeft: "4px" },
-          }}
-        >
-          {props.label}
-        </p>
-      </button>
-    </div>
+        {props.label}
+      </p>
+    </button>
   );
 }
