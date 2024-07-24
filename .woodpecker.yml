@@ -10,8 +10,8 @@ steps:
       - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > /root/.ssh/config
       - npm install
       - npm run build
-      - ssh root@10.0.10.4 'rm -rf /mnt/sda1/www/equipment_tracker_frontend/*'
-      - scp -r dist/* root@10.0.10.4:/mnt/sda1/files/equipment_tracker_frontend
+      - ssh root@10.0.10.4 'rm -rf /mnt/nvme/www/equipment_tracker_frontend/*'
+      - scp -r dist/* root@10.0.10.4:/mnt/nvme/www/equipment_tracker_frontend
     when:
       - branch: master
       - event: push
