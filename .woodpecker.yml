@@ -2,7 +2,7 @@
 steps:
   - name: build & copy
     image: node:18-alpine
-      when:
+    when:
       - branch: master
         event: push
     commands:
