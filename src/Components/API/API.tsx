@@ -23,7 +23,7 @@ let backendURL;
 if (debug) {
   backendURL = "http://localhost:8000/";
 } else {
-  backendURL = "https://equipment-tracker-backend.keannu1.duckdns.org/";
+  backendURL = "https://api.equipment-tracker.06222001.xyz/";
 }
 
 const instance = axios.create({
