@@ -2,6 +2,9 @@
 steps:
   - name: build & copy
     image: node:18-alpine
+      when:
+      - branch: master
+        event: push
     commands:
       - apk add --no-cache openssh-client
       - mkdir -p /root/.ssh/
@@ -12,7 +15,4 @@ steps:
       - npm run build
       - ssh root@10.0.10.4 'rm -rf /mnt/nvme/www/equipment_tracker_frontend/*'
       - scp -r dist/* root@10.0.10.4:/mnt/nvme/www/equipment_tracker_frontend
-    when:
-      - branch: master
-        event: push
     secrets: [SSH_KEY]
