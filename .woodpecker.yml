@@ -14,5 +14,5 @@ steps:
       - scp -r dist/* root@10.0.10.4:/mnt/nvme/www/equipment_tracker_frontend
     when:
       - branch: master
-      - event: push
+        event: push
     secrets: [SSH_KEY]
