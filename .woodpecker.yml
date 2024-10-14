@@ -13,6 +13,6 @@ steps:
       - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > /root/.ssh/config
       - npm install
       - npm run build
-      - ssh "$REMOTE_HOST" 'rm -rf /mnt/nvme/www/equipment_tracker_frontend/*'
-      - scp -r dist/* root@"$REMOTE_HOST":/mnt/nvme/www/equipment_tracker_frontend
-    secrets: [SSH_KEY, REMOTE_HOST]
+      - ssh "$REMOTE_HOST" 'rm -rf "$PROJECT_DIRECTORY/*"
+      - scp -r dist/* "$REMOTE_HOST":$PROJECT_DIRECTORY
+    secrets: [SSH_KEY, REMOTE_HOST, PROJECT_DIRECTORY]
